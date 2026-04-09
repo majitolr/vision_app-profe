@@ -1,6 +1,7 @@
 import os
 import streamlit as st
 import base64
+from PIL import Image
 from openai import OpenAI
 
 # Function to encode the image to base64
@@ -11,6 +12,11 @@ def encode_image(image_file):
 st.set_page_config(page_title="Analisis de imagen", layout="centered", initial_sidebar_state="collapsed")
 # Streamlit page setup
 st.title("Análisis de Imagen, pregúntale sobre lo que quieras recolectar!✨💖")
+
+try:
+    image = Image.open('imagen-análisis.jpg')
+    st.image(image, width=350)
+
 ke = st.text_input('Ingresa tu Clave')
 os.environ['OPENAI_API_KEY'] = ke
 
